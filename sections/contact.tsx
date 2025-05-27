@@ -1,4 +1,7 @@
-import { Mail, Phone, ArrowRight } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Mail, Phone, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,8 +13,67 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    description: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, service: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to submit contact form");
+      }
+
+      setIsSuccess(true);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        description: "",
+      });
+      toast.success("Your message has been sent successfully!");
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast.error(
+        error instanceof Error ? error.message : "Failed to submit contact form"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -30,8 +92,8 @@ export default function Contact() {
                 Ready to Transform Your Financial Strategy?
               </h2>
               <p className="text-lg text-muted-foreground">
-                Contact us today to schedule a consultation and discover how
-                KPPM can help you achieve your financial goals with confidence.
+                Contact us today to schedule a consultation and discover how KPPM
+                can help you achieve your financial goals with confidence.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
@@ -49,9 +111,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Call Us</h3>
-                    <p className="text-muted-foreground">
-                      9421520506, 9209186441
-                    </p>
+                    <p className="text-muted-foreground">9421520506, 9209186441</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -79,9 +139,8 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-foreground">Visit Us</h3>
                     <p className="text-muted-foreground">
-                      4 Ambika Appt, Behind BSNL office,
-Nal Stops, Karve Road, Erandwane
-Pune - 411004.
+                      4 Ambika Appt, Behind BSNL office, Nal Stops, Karve Road,
+                      Erandwane Pune - 411004.
                     </p>
                   </div>
                 </div>
@@ -90,97 +149,133 @@ Pune - 411004.
 
             <Card className="p-8">
               <CardHeader>
-                <CardTitle className="text-2xl">
-                  Schedule a Consultation
-                </CardTitle>
+                <CardTitle className="text-2xl">Schedule a Consultation</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-foreground mb-1"
-                      >
-                        Full Name
-                      </label>
-                      <Input id="name" placeholder="John Doe" />
+                {isSuccess ? (
+                  <div className="flex flex-col items-center justify-center py-6 text-center">
+                    <CheckCircle2 className="h-12 w-12 text-green-500 mb-4" />
+                    <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Thank you for reaching out. We'll get back to you as soon as
+                      possible.
+                    </p>
+                    <Button onClick={() => setIsSuccess(false)}>
+                      Send Another Message
+                    </Button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="block text-sm font-medium text-foreground mb-1"
+                        >
+                          Full Name
+                        </label>
+                        <Input
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="John Doe"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="block text-sm font-medium text-foreground mb-1"
+                        >
+                          Email Address
+                        </label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="john@example.com"
+                          required
+                        />
+                      </div>
                     </div>
                     <div>
                       <label
-                        htmlFor="email"
+                        htmlFor="phone"
                         className="block text-sm font-medium text-foreground mb-1"
                       >
-                        Email Address
+                        Phone Number
                       </label>
                       <Input
-                        id="email"
-                        type="email"
-                        placeholder="john@example.com"
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 98765 43210"
+                        required
                       />
                     </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-foreground mb-1"
+                    <div>
+                      <label
+                        htmlFor="service"
+                        className="block text-sm font-medium text-foreground mb-1"
+                      >
+                        Service Interested In
+                      </label>
+                      <Select
+                        value={formData.service}
+                        onValueChange={handleSelectChange}
+                        required
+                      >
+                        <SelectTrigger id="service" className="w-full">
+                          <SelectValue placeholder="Select a service" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="tax">Tax Planning & Compliance</SelectItem>
+                          <SelectItem value="audit">Audit & Assurance</SelectItem>
+                          <SelectItem value="accounting">Accounting & Bookkeeping</SelectItem>
+                          <SelectItem value="advisory">Business Advisory</SelectItem>
+                          <SelectItem value="compliance">Compliance Services</SelectItem>
+                          <SelectItem value="finance">Corporate Finance</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="description"
+                        className="block text-sm font-medium text-foreground mb-1"
+                      >
+                        Your Description
+                      </label>
+                      <Textarea
+                        id="description"
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                        placeholder="Tell us about your financial needs..."
+                        rows={4}
+                        required
+                      />
+                    </div>
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={isSubmitting}
                     >
-                      Phone Number
-                    </label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="+91 98765 43210"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="service"
-                      className="block text-sm font-medium text-foreground mb-1"
-                    >
-                      Service Interested In
-                    </label>
-                    <Select>
-                      <SelectTrigger id="service"  className="w-full">
-                        <SelectValue placeholder="Select a service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="tax">
-                          Tax Planning & Compliance
-                        </SelectItem>
-                        <SelectItem value="audit">Audit & Assurance</SelectItem>
-                        <SelectItem value="accounting">
-                          Accounting & Bookkeeping
-                        </SelectItem>
-                        <SelectItem value="advisory">
-                          Business Advisory
-                        </SelectItem>
-                        <SelectItem value="compliance">
-                          Compliance Services
-                        </SelectItem>
-                        <SelectItem value="finance">
-                          Corporate Finance
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-foreground mb-1"
-                    >
-                      Your Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      rows={4}
-                      placeholder="Tell us about your financial needs..."
-                    />
-                  </div>
-                  <Button type="submit" className="w-full">
-                    Submit Request
-                  </Button>
-                </form>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        "Submit Request"
+                      )}
+                    </Button>
+                  </form>
+                )}
               </CardContent>
             </Card>
           </div>

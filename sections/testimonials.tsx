@@ -26,7 +26,7 @@ const Testimonials = () => {
   ];
 
   // Component to render star ratings
-  const StarRating = ({ rating }) => {
+  const StarRating = ({ rating }: { rating: number }) => {
     const maxStars = 5;
     return (
       <div
@@ -51,7 +51,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="min-h-screen py-16 w-full flex flex-col items-center justify-center ">
+    <section id="clients" className="min-h-screen py-16 w-full flex flex-col items-center justify-center ">
       <div className="py-4 max-w-4xl text-center flex flex-col items-center mb-12">
         <div className="w-fit bg-accent text-primary px-4 py-1 rounded-full text-sm font-medium">
           What Our Clients Say
@@ -83,7 +83,7 @@ const Testimonials = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

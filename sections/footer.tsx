@@ -57,7 +57,7 @@ export default function Footer() {
               ].map((item) => (
                 <li key={item}>
                   <Link
-                    href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                    href={`/#${item.toLowerCase().replace(/\s+/g, "-")}`}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {item}
@@ -79,7 +79,7 @@ export default function Footer() {
               ].map((item) => (
                 <li key={item}>
                   <Link
-                    href="#services"
+                    href="/#services"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {item}

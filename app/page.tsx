@@ -20,7 +20,6 @@ const Lander = () => {
       <FAQ />
       <Blogs />
       <Contact />
-      <Footer/>
     </div>
   )
 }

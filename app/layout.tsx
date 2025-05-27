@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/sections/navbar";
 import { AuthProvider } from "@/lib/auth-context";
 import { SonnerProvider } from "@/components/sonner-provider";
+import Footer from "@/sections/footer";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -31,6 +32,7 @@ export default function RootLayout({
       ><AuthProvider>
         <Navbar/>
         {children}
+        <Footer />
         <SonnerProvider />
         </AuthProvider>
       </body>

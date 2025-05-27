@@ -49,7 +49,7 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="min-h-screen py-8 sm:py-12 md:py-16 w-full flex flex-col items-center justify-evenly bg-muted/25 bg-dot px-4 sm:px-6 lg:px-8">
+    <section id="services" className="min-h-screen py-8 sm:py-12 md:py-16 w-full flex flex-col items-center justify-evenly bg-muted/25 bg-dot px-4 sm:px-6 lg:px-8">
       <div className="py-4 max-w-4xl text-center flex flex-col items-center mb-6">
         <div className="w-fit bg-accent text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium">
           How We Serve
@@ -96,7 +96,7 @@ const Services = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

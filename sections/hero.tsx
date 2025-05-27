@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className=" flex flex-col lg:flex-row justify-center items-center w-full bg-grid bg-[#F7FAFC] px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <section id='home' className=" flex flex-col lg:flex-row justify-center items-center w-full bg-grid bg-[#F7FAFC] px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <div className="flex flex-col justify-center max-w-lg lg:max-w-xl mb-6 lg:mb-0 lg:pr-8">
         <div className="py-4">
           <div className="bg-accent w-fit px-3 py-1 text-xs sm:text-sm rounded-full">
@@ -48,7 +48,7 @@ const Hero = () => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -34,7 +34,7 @@ const Blogs = () => {
   ];
 
   return (
-    <div className="min-h-screen py-8 sm:py-12 md:py-16 w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
+    <section id="blog" className="min-h-screen py-8 sm:py-12 md:py-16 w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
       <div className="py-4 max-w-4xl text-center flex flex-col items-center mb-8 sm:mb-12">
         <div className="w-fit bg-accent text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium">
           Expert Insights
@@ -57,18 +57,16 @@ const Blogs = () => {
             excerpt={post.excerpt}
             date={post.date}
             readTime={post.readTime}
-            category={post.category}
-            image={post.image}
-          />
+            image={post.image} tags={[]} author={""}          />
         ))}
       </div>
 
       <div className="mt-8 sm:mt-12">
-        <button className="bg-card border hover:bg-accent/90 font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-full cursor-pointer transition-colors text-sm sm:text-base">
+        <a href="/blogs" className="bg-card border hover:bg-accent/90 font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-full cursor-pointer transition-colors text-sm sm:text-base">
           View All Articles
-        </button>
+        </a>
       </div>
-    </div>
+    </section>
   );
 };
 

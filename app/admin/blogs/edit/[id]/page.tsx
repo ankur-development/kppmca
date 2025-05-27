@@ -1,10 +1,12 @@
-import BlogForm from "@/components/blog-form"
+import BlogForm from "@/components/blog-form";
 
-export default function EditBlogPage({
+export default async function EditBlogPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params; // Await the params to get the id
+
   return (
     <div className="space-y-6">
       <div>
@@ -12,7 +14,7 @@ export default function EditBlogPage({
         <p className="text-muted-foreground">Make changes to your blog post</p>
       </div>
 
-      <BlogForm blogId={params.id} />
+      <BlogForm blogId={id} />
     </div>
-  )
+  );
 }

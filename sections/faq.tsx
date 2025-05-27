@@ -32,12 +32,12 @@ const FAQ = () => {
     },
   ];
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index:any) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
-    <div className="min-h-screen py-8 w-full flex flex-col md:items-center  justify-center gap-8 px-4 md:px-8 bg-muted/25 bg-dot">
+    <section id="faq" className="min-h-screen py-8 w-full flex flex-col md:items-center  justify-center gap-8 px-4 md:px-8 bg-muted/25 bg-dot">
       <div className="py-4 max-w-4xl text-center flex flex-col items-center mb-6 ">
         <div className="w-fit bg-accent text-primary px-4 py-1 rounded-full text-sm font-medium">
           Frequently Asked Questions
@@ -80,7 +80,7 @@ const FAQ = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 
 const About = () => {
   return (
-    <div className="min-h-screen py-8 md:py-16 w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+    <section id="about" className="min-h-screen py-8 md:py-16 w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="py-4 max-w-4xl text-center flex flex-col items-center mb-6">
         <div className="w-fit bg-accent text-primary px-4 py-1 rounded-full text-sm font-medium">
           Who We Are
@@ -82,7 +82,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

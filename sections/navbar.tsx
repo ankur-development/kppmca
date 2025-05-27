@@ -42,7 +42,7 @@ export default function Navbar() {
   }, []);
 
   // Toggle menu handler
-  const toggleMenu = (e) => {
+  const toggleMenu = (e: { stopPropagation: () => void; }) => {
     e.stopPropagation(); // Prevent event bubbling
     setIsMenuOpen((prev) => !prev);
   };
@@ -52,7 +52,7 @@ export default function Navbar() {
     setIsMenuOpen(false);
   };
 
-  const navItems = ["Home", "About", "Services", "Clients", "Blog", "Contact"];
+  const navItems = ["Home", "About", "Services", "Clients", "Blog"];
 
   return (
     <>
@@ -129,7 +129,7 @@ export default function Navbar() {
             {navItems.map((item) => (
               <Link
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={`/#${item.toLowerCase()}`}
                 className="text-gray-700 dark:text-gray-200 font-medium hover:text-primary transition-colors relative py-2 group"
               >
                 {item}
@@ -142,7 +142,7 @@ export default function Navbar() {
             asChild
             className="hidden md:flex gap-2 bg-primary hover:bg-primary/90 text-white"
           >
-            <Link href="#contact">
+            <Link href="/#contact">
               Get in Touch
               <ArrowRight className="h-4 w-4 ml-1" />
             </Link>
