@@ -9,11 +9,10 @@ const About = () => {
           Who We Are
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl mt-3">
-          A Team of Financial Experts Committed to Your Success.
+          A Team of Financial Experts who work with Positive thinking and innovation at our attitude, excellance and learning at our aptitude to reach the altitude of client success.
         </h1>
         <p className="max-w-xl mt-3 text-sm sm:text-base">
-          KPPM is a premier chartered accountancy firm dedicated to providing
-          comprehensive financial solutions with integrity and precision.
+          KPPM is a premier chartered accountancy firm dedicated to providing comprehensive financial solutions with integrity and precision.
         </p>
       </div>
 
@@ -21,11 +20,7 @@ const About = () => {
         <div className="p-4 space-y-3">
           <h2 className="text-xl sm:text-2xl font-semibold">Our Mission</h2>
           <p className="max-w-xl text-sm sm:text-base">
-            At KPPM, our mission is to empower businesses with strategic
-            financial insights and solutions that drive growth, ensure
-            compliance, and build lasting success. We combine technical
-            expertise with personalized service to address the unique needs of
-            each client.
+           At KPPM, our mission is to empower businesses with strategic financial insights and solutions that drive growth, ensure compliance, and build lasting success. We combine technical expertise with personalized service to address the unique needs of each client.
           </p>
 
           <ul className="space-y-4 my-6">
@@ -35,8 +30,7 @@ const About = () => {
               </div>
               <div>
                 <span className="font-medium">Industry Experience</span>:
-                Founded by experienced professionals with over 25 years of
-                collective expertise in financial services
+                Founded by experienced professionals with over 75 years of collective expertise in financial services
               </div>
             </li>
             <li className="flex items-start">
@@ -45,8 +39,7 @@ const About = () => {
               </div>
               <div>
                 <span className="font-medium">Professional Excellence</span>:
-                Committed to the highest standards of integrity and financial
-                accuracy with certifications from leading accounting bodies
+                Committed to the highest standards of integrity and financial accuracy with certifications from leading accounting bodies
               </div>
             </li>
             <li className="flex items-start">
@@ -55,8 +48,7 @@ const About = () => {
               </div>
               <div>
                 <span className="font-medium">Client-Centered Approach</span>:
-                Dedicated to building long-term relationships through responsive
-                service and customized financial strategies
+                Dedicated to building long-term relationships through responsive service and customized financial strategies
               </div>
             </li>
           </ul>

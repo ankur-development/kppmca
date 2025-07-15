@@ -9,12 +9,11 @@ const Hero = () => {
             Trusted Chartered Accountant Firm
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mt-3 leading-tight">
-            Financial Expertise <br />
+            Profeciency <br />
             <span className="text-primary">You Can Trust</span>
           </h1>
           <p className="max-w-md mt-3 text-sm sm:text-base">
-            We help businesses navigate financial complexities with precision,
-            integrity, and strategic insight.
+            We help businesses navigate financial complexities with precision, integrity, and strategic insight, with ethical and quality professional advise.
           </p>
         </div>
 

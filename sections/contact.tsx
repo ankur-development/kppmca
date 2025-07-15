@@ -92,8 +92,8 @@ export default function Contact() {
                 Ready to Transform Your Financial Strategy?
               </h2>
               <p className="text-lg text-muted-foreground">
-                Contact us today to schedule a consultation and discover how KPPM
-                can help you achieve your financial goals with confidence.
+                Contact us today to schedule a consultation and discover how
+                KPPM can help you achieve your financial goals with confidence.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
@@ -111,7 +111,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Call Us</h3>
-                    <p className="text-muted-foreground">9421520506, 9209186441</p>
+                    <p className="text-muted-foreground">
+                      9421520506, 9209186441
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -143,22 +145,36 @@ export default function Contact() {
                       Erandwane Pune - 411004.
                     </p>
                   </div>
+
+                  <div>
+                    <h3 className="font-semibold text-foreground">
+                      Malegaon Branch
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Office No 4 Infront of Maddu Baba Masjid Tamba Kanta
+                      Malegaon Dist Nashik 423203
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
             <Card className="p-8">
               <CardHeader>
-                <CardTitle className="text-2xl">Schedule a Consultation</CardTitle>
+                <CardTitle className="text-2xl">
+                  Schedule a Consultation
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 {isSuccess ? (
                   <div className="flex flex-col items-center justify-center py-6 text-center">
                     <CheckCircle2 className="h-12 w-12 text-green-500 mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
+                    <h3 className="text-xl font-semibold mb-2">
+                      Message Sent!
+                    </h3>
                     <p className="text-muted-foreground mb-6">
-                      Thank you for reaching out. We'll get back to you as soon as
-                      possible.
+                      Thank you for reaching out. We'll get back to you as soon
+                      as possible.
                     </p>
                     <Button onClick={() => setIsSuccess(false)}>
                       Send Another Message
@@ -234,12 +250,31 @@ export default function Contact() {
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="tax">Tax Planning & Compliance</SelectItem>
-                          <SelectItem value="audit">Audit & Assurance</SelectItem>
-                          <SelectItem value="accounting">Accounting & Bookkeeping</SelectItem>
-                          <SelectItem value="advisory">Business Advisory</SelectItem>
-                          <SelectItem value="compliance">Compliance Services</SelectItem>
-                          <SelectItem value="finance">Corporate Finance</SelectItem>
+                          <SelectItem value="new-business-setup">
+                            New Business Set up
+                          </SelectItem>
+                          <SelectItem value="audit-assurance">
+                            Audit and Assurance
+                          </SelectItem>
+                          <SelectItem value="tax-compliances">
+                            Tax Compliances
+                          </SelectItem>
+                          <SelectItem value="business-housing-loans">
+                            Business Loans Housing Loans
+                          </SelectItem>
+                          <SelectItem value="valuations">
+                            Business Valuations, Company Valuations
+                          </SelectItem>
+                          <SelectItem value="tax-consultancy">
+                            Tax Consultancy
+                          </SelectItem>
+                          <SelectItem value="fema-compliances">
+                            FEMA Compliances
+                          </SelectItem>
+                          <SelectItem value="income-tax-case">
+                            Income Tax Case
+                          </SelectItem>
+                          <SelectItem value="gst-case">GST Case</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

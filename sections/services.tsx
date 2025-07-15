@@ -55,11 +55,10 @@ const Services = () => {
           How We Serve
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl mt-3">
-          Comprehensive Financial Services Tailored to Your Needs
+          Comprehensive Financial and Compliance Services Tailored to Your Needs
         </h1>
         <p className="max-w-xl mt-3 text-sm sm:text-base">
-          We offer a wide range of services designed to address all aspects of
-          your financial requirements with precision and expertise.
+          We offer a wide range of services designed to address all aspects of your financial and Complinace requirements with precision, expertise and promptness.
         </p>
       </div>
 

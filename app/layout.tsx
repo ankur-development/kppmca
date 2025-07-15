@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Lexend, Archivo } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/sections/navbar";
 import { AuthProvider } from "@/lib/auth-context";
 import { SonnerProvider } from "@/components/sonner-provider";
-import Footer from "@/sections/footer";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -30,9 +28,8 @@ export default function RootLayout({
       <body
         className={`${lexend.variable} ${funnelDisplay.variable} antialiased`}
       ><AuthProvider>
-        <Navbar/>
+
         {children}
-        <Footer />
         <SonnerProvider />
         </AuthProvider>
       </body>

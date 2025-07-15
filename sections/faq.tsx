@@ -6,29 +6,54 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "What services do you offer?",
+      question: "How will outsourcing of Accounting and Finance benefit the business?",
       answer:
-        "We provide a wide range of services including web development, mobile app development, UI/UX design, and digital marketing solutions tailored to your business needs.",
+        "Outsourcing accounting and finance reduces the time and effort required to manage in-house accounting personnel, allowing you to devote more resources to core business activities.",
     },
     {
-      question: "How long does a typical project take?",
+      question: "Is there any option to use outsourcing for more than one CA firm?",
       answer:
-        "Project timelines vary depending on complexity. A standard website might take 4-8 weeks, while custom applications could take 3-6 months. We provide detailed timelines during consultation.",
+        "A chartered accountant in practice can join multiple companies as a partner. However, they cannot become a partner in other firms or professions outside of their practice.",
     },
     {
-      question: "What is your pricing model?",
+      question: "What are the advantages of accounting services?",
       answer:
-        "We offer flexible pricing models including fixed-price, hourly, and subscription-based plans. Exact costs depend on project scope and requirements.",
+        "Effective accounting provides comprehensive insights into your company's financial health, enabling smarter business decisions with a clear view of your finances.",
     },
     {
-      question: "Do you provide ongoing support?",
+      question: "How can accounting services help my business?",
       answer:
-        "Yes, we offer maintenance and support packages to ensure your product remains up-to-date and performs optimally after launch.",
+        "Bookkeeping and accounting services help track expenses, ensure accurate tax documentation, and provide a clear picture of your company's financial health.",
     },
     {
-      question: "Can you work with existing systems?",
+      question: "Which three accounting items are the most important for a business?",
       answer:
-        "Absolutely, we specialize in integrating with existing systems and platforms, ensuring seamless compatibility and functionality.",
+        "The top line (cash), accounts receivable, and short-term investments are considered critical components of a company's balance sheet, alongside assets, liabilities, and equity.",
+    },
+    {
+      question: "What is financial accounting and what are its advantages?",
+      answer:
+        "Financial accounting meticulously tracks a company's financial transactions, summarizing revenue and expenditure in a Financial Statement of Accounts, providing a clear overview of business activities.",
+    },
+    {
+      question: "Where would you find the best Chartered Accountants in Pune?",
+      answer:
+        "The best Chartered Accountants in Pune can be identified through a 50-Point Inspection, evaluating customer reviews, history, complaints, ratings, satisfaction, trust, pricing, and overall quality.",
+    },
+    {
+      question: "Does India provide 'Double Taxation Relief'?",
+      answer:
+        "Yes, India offers double taxation relief under Section 91 of the Income Tax Act, 1961, for individuals taxed on the same income in India and a foreign country with a Double Taxation Avoidance Agreement.",
+    },
+    {
+      question: "What are the different categories under which Income Tax is imposed?",
+      answer:
+        "The Income Tax Act categorizes taxable income into: Salaries, Profits from business or profession, Income from house property, Income from other sources, and Capital gains.",
+    },
+    {
+      question: "What are the various forms of collection of Income Tax?",
+      answer:
+        "Income tax is collected through various methods, including Tax Deducted at Source (TDS), Tax Collected at Source (TCS), advance tax, and self-assessment tax.",
     },
   ];
 

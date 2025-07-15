@@ -1,7 +1,340 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Linkedin, Mail, Phone } from "lucide-react";
+import { useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
+// Privacy Policy Dialog Component
+function PrivacyPolicyDialog() {
+  const [hasReadToBottom, setHasReadToBottom] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    const content = contentRef.current;
+    if (!content) return;
+
+    const scrollPercentage =
+      content.scrollTop / (content.scrollHeight - content.clientHeight);
+    if (scrollPercentage >= 0.99 && !hasReadToBottom) {
+      setHasReadToBottom(true);
+    }
+  };
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <button className="text-muted-foreground text-sm hover:text-primary transition-colors">
+          Privacy Policy
+        </button>
+      </DialogTrigger>
+      <DialogContent className="flex flex-col gap-0 p-0 sm:max-h-[min(640px,80vh)] sm:max-w-lg [&>button:last-child]:top-3.5">
+        <DialogHeader className="contents space-y-0 text-left">
+          <DialogTitle className="border-b px-6 py-4 text-base">
+            Privacy Policy
+          </DialogTitle>
+          <div
+            ref={contentRef}
+            onScroll={handleScroll}
+            className="overflow-y-auto"
+          >
+            <DialogDescription asChild>
+              <div className="px-6 py-4">
+                <div className="[&_strong]:text-foreground space-y-4 [&_strong]:font-semibold">
+                  <div className="space-y-4">
+                    <div className="space-y-1">
+                      <p>
+                        At KPPM and Associates, we are committed to safeguarding your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, disclose, and protect the information you provide to us. By using our services or visiting our website, you consent to the practices described in this policy.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Information We Collect</strong>
+                      </p>
+                      <p>
+                        <strong>Personal Information:</strong> We may collect personal information, including but not limited to your name, contact details, email address, and other identifiable information when you engage with our services, submit inquiries, or use our website.
+                      </p>
+                      <p>
+                        <strong>Usage Information:</strong> We collect information about how you interact with our website and services, including your IP address, browser type, and usage patterns. This information is used to improve our website and services.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>How We Use Your Information</strong>
+                      </p>
+                      <p>
+                        <strong>Providing Services:</strong> We use your personal information to provide the services you request, including but not limited to tax consultancy, business advisory, and compliance services.
+                      </p>
+                      <p>
+                        <strong>Communication:</strong> We may use your contact information to communicate with you about our services, updates, and important information.
+                      </p>
+                      <p>
+                        <strong>Improving Services:</strong> Your usage information helps us analyze and enhance our services, tailor our content, and improve the user experience.
+                      </p>
+                      <p>
+                        <strong>Legal Compliance:</strong> We may use and disclose your information to comply with legal obligations, such as tax regulations and reporting requirements.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Information Sharing</strong>
+                      </p>
+                      <p>
+                        We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except when required by law or when necessary for providing our services. We may share your information with trusted service providers who assist us in operating our website and conducting our business.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Data Security</strong>
+                      </p>
+                      <p>
+                        We employ industry-standard security measures to protect your personal information from unauthorized access, disclosure, alteration, and destruction. While we strive to protect your personal information, no method of transmission over the internet or electronic storage is entirely secure, and we cannot guarantee absolute security.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Your Rights</strong>
+                      </p>
+                      <p>
+                        You have the right to access, correct, or delete your personal information held by us. If you wish to exercise these rights or have any concerns about your data, please contact us using the information provided below.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Changes to this Privacy Policy</strong>
+                      </p>
+                      <p>
+                        We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Thus, we advise you to review this page periodically for any changes.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Contact Us</strong>
+                      </p>
+                      <p>
+                        If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your personal information, please contact us at: info@kppmca.in or call us at 9421520506.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </DialogDescription>
+          </div>
+        </DialogHeader>
+        <DialogFooter className="border-t px-6 py-4 sm:items-center">
+          {!hasReadToBottom && (
+            <span className="text-muted-foreground grow text-xs max-sm:text-center">
+              Read all policy before accepting.
+            </span>
+          )}
+          <DialogClose asChild>
+            <Button type="button" variant="outline">
+              Cancel
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button type="button" disabled={!hasReadToBottom}>
+              I understand
+            </Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+// Terms of Service Dialog Component
+function TermsOfServiceDialog() {
+  const [hasReadToBottom, setHasReadToBottom] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    const content = contentRef.current;
+    if (!content) return;
+
+    const scrollPercentage =
+      content.scrollTop / (content.scrollHeight - content.clientHeight);
+    if (scrollPercentage >= 0.99 && !hasReadToBottom) {
+      setHasReadToBottom(true);
+    }
+  };
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <button className="text-muted-foreground text-sm hover:text-primary transition-colors">
+          Terms of Service
+        </button>
+      </DialogTrigger>
+      <DialogContent className="flex flex-col gap-0 p-0 sm:max-h-[min(640px,80vh)] sm:max-w-lg [&>button:last-child]:top-3.5">
+        <DialogHeader className="contents space-y-0 text-left">
+          <DialogTitle className="border-b px-6 py-4 text-base">
+            Terms of Service
+          </DialogTitle>
+          <div
+            ref={contentRef}
+            onScroll={handleScroll}
+            className="overflow-y-auto"
+          >
+            <DialogDescription asChild>
+              <div className="px-6 py-4">
+                <div className="[&_strong]:text-foreground space-y-4 [&_strong]:font-semibold">
+                  <div className="space-y-4">
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Acceptance of Terms</strong>
+                      </p>
+                      <p>
+                        By accessing and using this website, users agree to
+                        comply with and be bound by these Terms of Service.
+                        Users who do not agree with these terms should
+                        discontinue use of the website immediately.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Professional Services</strong>
+                      </p>
+                      <p>
+                        KPPM provides chartered accountancy and related professional services. All services are subject to professional standards and regulations. The scope of work will be defined in separate engagement letters.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>User Account Responsibilities</strong>
+                      </p>
+                      <p>
+                        Users are responsible for maintaining the
+                        confidentiality of their account credentials. Any
+                        activities occurring under a user's account are
+                        the sole responsibility of the account holder. Users
+                        must notify the website administrators immediately of
+                        any unauthorized account access.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Content Usage and Restrictions</strong>
+                      </p>
+                      <p>
+                        The website and its original content are protected by
+                        intellectual property laws. Users may not reproduce,
+                        distribute, modify, create derivative works, or
+                        commercially exploit any content without explicit
+                        written permission from KPPM.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Limitation of Liability</strong>
+                      </p>
+                      <p>
+                        The website provides content "as is" without
+                        any warranties. KPPM shall not be liable
+                        for direct, indirect, incidental, consequential, or
+                        punitive damages arising from user interactions with the
+                        platform.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>User Conduct Guidelines</strong>
+                      </p>
+                      <ul className="list-disc pl-6">
+                        <li>Not upload harmful or malicious content</li>
+                        <li>Respect the rights of other users</li>
+                        <li>
+                          Avoid activities that could disrupt website
+                          functionality
+                        </li>
+                        <li>
+                          Comply with applicable local and international laws
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Modifications to Terms</strong>
+                      </p>
+                      <p>
+                        KPPM reserves the right to modify these terms at
+                        any time. Continued use of the website after changes
+                        constitutes acceptance of the new terms.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Termination Clause</strong>
+                      </p>
+                      <p>
+                        KPPM may terminate or suspend user access without
+                        prior notice for violations of these terms or for any
+                        other reason deemed appropriate by the administration.
+                      </p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Governing Law</strong>
+                      </p>
+                      <p>
+                        These terms are governed by the laws of India and the jurisdiction of Maharashtra courts, without regard to conflict of law principles.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </DialogDescription>
+          </div>
+        </DialogHeader>
+        <DialogFooter className="border-t px-6 py-4 sm:items-center">
+          {!hasReadToBottom && (
+            <span className="text-muted-foreground grow text-xs max-sm:text-center">
+              Read all terms before accepting.
+            </span>
+          )}
+          <DialogClose asChild>
+            <Button type="button" variant="outline">
+              Cancel
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button type="button" disabled={!hasReadToBottom}>
+              I agree
+            </Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+// Main Footer Component
 export default function Footer() {
   return (
     <footer className="bg-foreground text-background pt-16 pb-8">
@@ -33,7 +366,7 @@ export default function Footer() {
                 aria-label="Twitter"
                 className="bg-muted hover:bg-primary hover:text-muted p-2 rounded-full transition-colors"
               >
-                <img src={'/google.svg'} alt="google searcg" className="h-5 w-5" />
+                <img src={'/google.svg'} alt="google search" className="h-5 w-5" />
               </a>
               <a
                 href="https://in.linkedin.com/company/kppm-associates"
@@ -143,18 +476,8 @@ export default function Footer() {
               © {new Date().getFullYear()} KPPM | All Rights Reserved
             </p>
             <div className="flex gap-6">
-              <Link
-                href="/privacy-policy"
-                className="text-muted-foreground text-sm hover:text-primary transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms-of-service"
-                className="text-muted-foreground text-sm hover:text-primary transition-colors"
-              >
-                Terms of Service
-              </Link>
+              <PrivacyPolicyDialog />
+              <TermsOfServiceDialog />
             </div>
           </div>
         </div>
