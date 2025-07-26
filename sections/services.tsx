@@ -54,7 +54,7 @@ const Services = () => {
         <div className="w-fit bg-accent text-primary px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium">
           How We Serve
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl mt-3">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl mt-3 ">
           Comprehensive Financial and Compliance Services Tailored to Your Needs
         </h1>
         <p className="max-w-xl mt-3 text-sm sm:text-base">

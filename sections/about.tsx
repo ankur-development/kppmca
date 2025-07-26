@@ -8,7 +8,7 @@ const About = () => {
         <div className="w-fit bg-accent text-primary px-4 py-1 rounded-full text-sm font-medium">
           Who We Are
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl mt-3">
+        <h1 className="text-xl sm:text-2xl md:text-3xl mt-3 text-balance">
           A Team of Financial Experts who work with Positive thinking and innovation at our attitude, excellance and learning at our aptitude to reach the altitude of client success.
         </h1>
         <p className="max-w-xl mt-3 text-sm sm:text-base">
