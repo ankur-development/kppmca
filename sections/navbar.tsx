@@ -112,7 +112,7 @@ export default function Navbar() {
         } transition-shadow duration-300`}
       >
         <div className=" px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center relative z-20">
+          <Link href="/" className="flex items-center relative">
             <div className="relative h-12 w-32">
               <Image
                 src="/logo.png"
