@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Linkedin, Mail, Phone } from "lucide-react";
-import { useRef, useState } from "react";
+import { Facebook, Linkedin, Mail, Phone, ExternalLink } from "lucide-react";
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,6 +15,54 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+
+// External links data
+const externalLinks = {
+  government: [
+    { name: "RBI", url: "https://www.rbi.org.in/home.aspx" },
+    { name: "Mahavat", url: "https://www.rbi.org.in/home.aspx" },
+    { name: "Income Tax Department", url: "https://incometaxindia.gov.in/Pages/default.aspx" },
+    { name: "e-Filing Portal", url: "https://www.incometax.gov.in/iec/foportal" },
+    { name: "Ministry of Corporate Affairs", url: "https://www.mca.gov.in/content/mca/global/en/home.html" },
+    { name: "CBIC", url: "https://www.cbic.gov.in/" },
+    { name: "ITAT Online", url: "https://itatonline.org/archives/main/" },
+    { name: "GST", url: "https://www.gst.gov.in/" },
+    { name: "DGFT", url: "https://www.dgft.gov.in/CP/" },
+    { name: "Maharera", url: "https://maharerait.mahaonline.gov.in/" },
+    { name: "ROFM", url: "https://rof.mahaonline.gov.in/" },
+    { name: "MSME", url: "https://msme.gov.in/" },
+    { name: "Udyog Aadhar", url: "https://udyamregistration.gov.in/" },
+    { name: "Mahagst", url: "https://mahagst.gov.in/" }
+  ],
+  caGovernance: [
+    { name: "ICAI", url: "https://www.icai.org/" },
+    { name: "PUNE ICAI", url: "https://www.puneicai.org/" },
+    { name: "UDIN", url: "https://udin.icai.org/" }
+  ],
+  banks: [
+    { name: "HDFC Bank", url: "https://www.hdfcbank.com/" },
+    { name: "ICICI Bank", url: "https://www.icicibank.com/" },
+    { name: "State Bank of India", url: "https://www.onlinesbi.com/" },
+    { name: "Indian Overseas Bank", url: "https://www.iob.in/" },
+    { name: "Punjab National Bank", url: "https://www.pnbindia.in/" },
+    { name: "IndusInd Bank", url: "https://www.indusind.com/in/en/personal.html" },
+    { name: "Bank of India", url: "https://www.bankofindia.co.in/" },
+    { name: "Bank of Maharashtra", url: "https://bankofmaharashtra.in/" },
+    { name: "Canara Bank", url: "https://canarabank.com/" },
+    { name: "Union Bank of India", url: "https://www.unionbankofindia.co.in/english/home.aspx" }
+  ],
+  news: [
+    { name: "Times of India", url: "https://timesofindia.indiatimes.com/" },
+    { name: "Indian Express", url: "https://indianexpress.com/" },
+    { name: "Hindustan Times", url: "https://www.hindustantimes.com/" },
+    { name: "Economic Times", url: "https://economictimes.indiatimes.com/" }
+  ],
+  finance: [
+    { name: "BSE", url: "https://www.bseindia.com/" },
+    { name: "NSE", url: "https://www.nseindia.com/" },
+    { name: "Moneycontrol", url: "https://www.moneycontrol.com/" }
+  ]
+};
 
 // Privacy Policy Dialog Component
 function PrivacyPolicyDialog() {
@@ -334,12 +382,49 @@ function TermsOfServiceDialog() {
   );
 }
 
+// External Links Section Component
+type ExternalLink = {
+  name: ReactNode;
+  url: string;
+};
+
+type ExternalLinksSectionProps = {
+  title: string;
+  links: ExternalLink[];
+  className?: string;
+};
+
+function ExternalLinksSection({ title, links, className = "" }: ExternalLinksSectionProps) {
+  return (
+    <div className={className}>
+      <h3 className="text-lg font-semibold mb-4">{title}</h3>
+      <ul className="space-y-2">
+        {links.map((link, index) => (
+          <li key={index}>
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2"
+            >
+              {link.name}
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 // Main Footer Component
 export default function Footer() {
   return (
     <footer className="bg-foreground text-background pt-16 pb-8">
       <div className="container mx-auto px-4 lg:px-8">
+        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Company Info */}
           <div>
             <Image
               src="/logo.png"
@@ -363,7 +448,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://www.google.com/search?source=hp&ei=bk7tW_XmC4OS9QOE6J-wCw&q=kppm+and+associates&oq=&gs_l=psy-ab.3.1.35i39k1l6.0.0.0.7171.2.1.0.0.0.0.0.0..1.0....0...1c..64.psy-ab..1.1.150.6...150.h2YV_IB91rk"
-                aria-label="Twitter"
+                aria-label="Google Search"
                 className="bg-muted hover:bg-primary hover:text-muted p-2 rounded-full transition-colors"
               >
                 <img src={'/google.svg'} alt="google search" className="h-5 w-5" />
@@ -377,6 +462,8 @@ export default function Footer() {
               </a>
             </div>
           </div>
+
+          {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
@@ -399,6 +486,8 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Our Services */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Our Services</h3>
             <ul className="space-y-3">
@@ -421,6 +510,8 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Contact Information */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Contact Information</h3>
             <ul className="space-y-4">
@@ -470,6 +561,35 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+
+        {/* External Links Section */}
+        <div className="border-t border-muted pt-12 mb-12">
+          <h2 className="text-2xl font-bold mb-8 text-center">Useful Links</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+            <ExternalLinksSection 
+              title="Government Websites" 
+              links={externalLinks.government} 
+            />
+            <ExternalLinksSection 
+              title="CA Governance" 
+              links={externalLinks.caGovernance} 
+            />
+            <ExternalLinksSection 
+              title="Financial Institutions" 
+              links={externalLinks.banks} 
+            />
+            <ExternalLinksSection 
+              title="News" 
+              links={externalLinks.news} 
+            />
+            <ExternalLinksSection 
+              title="Finance" 
+              links={externalLinks.finance} 
+            />
+          </div>
+        </div>
+
+        {/* Bottom Footer */}
         <div className="border-t border-muted pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-muted-foreground text-sm mb-4 md:mb-0">
