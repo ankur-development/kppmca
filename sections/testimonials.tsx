@@ -18,13 +18,12 @@ const industries = [
   "Information Technology",
   "Printing & Packaging",
   "Hospitality & Healthcare",
-  "Real Estate",
-  "Trusts & NGOs"
+  "Real Estate"
 ];
 
 const IndustriesWeServe = () => {
   return (
-    <section id="industries" className="py-16 px-4 w-full flex flex-col items-center justify-center">
+    <section id="clients" className="py-16 px-4 w-full flex flex-col items-center justify-center">
       <div className="text-center max-w-3xl mb-12">
         <div className="w-fit mx-auto bg-accent text-primary px-4 py-1 rounded-full text-sm font-medium">
           Industries We Serve

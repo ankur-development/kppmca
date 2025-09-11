@@ -9,46 +9,68 @@ import Image from "next/image";
 export default function Team() {
   const teamMembers = [
     {
-      name: "Amit Sharma",
+      name: "Darshan Pahade",
       description:
-        "Amit is a seasoned Chartered Accountant with over 15 years of experience in tax planning and compliance, helping clients navigate complex financial regulations.",
-      email: "amit@kppmca.in",
-      linkedin: "https://linkedin.com/in/amit-sharma",
+        "Darshan is a seasoned Chartered Accountant with over 15 years of experience in tax planning and compliance, helping clients navigate complex financial regulations.",
+      email: "darshan@kppmca.in",
+      linkedin: "https://linkedin.com/in/darshan-pahade",
+      image: "/images/team/darshan-pahade.jpg",
     },
     {
-      name: "Priya Patel",
+      name: "Harshal Pahade",
       description:
-        "Priya specializes in audit and assurance, ensuring accuracy and transparency in financial reporting for businesses of all sizes.",
+        "Harshal specializes in audit and assurance, ensuring accuracy and transparency in financial reporting for businesses of all sizes.",
+      email: "harshal@kppmca.in",
+      linkedin: "https://linkedin.com/in/harshal-pahade",
+      image: "/images/team/harshal-pahade.jpg",
+    },
+    {
+      name: "Nilesh Kulkarni",
+      description:
+        "Nilesh leads our business advisory services, providing strategic insights to drive growth and operational efficiency.",
+      email: "nilesh@kppmca.in",
+      linkedin: "https://linkedin.com/in/nilesh-kulkarni",
+      image: "/images/team/nilesh-kulkarni.jpg",
+    },
+    {
+      name: "Priya Agarwal",
+      description:
+        "Priya is an expert in accounting and bookkeeping, streamlining financial processes for small and medium enterprises.",
       email: "priya@kppmca.in",
-      linkedin: "https://linkedin.com/in/priya-patel",
+      linkedin: "https://linkedin.com/in/priya-agarwal",
+      image: "/images/team/priya-agarwal.jpg",
     },
     {
-      name: "Rahul Desai",
+      name: "Gaurav R. Patil",
       description:
-        "Rahul leads our business advisory services, providing strategic insights to drive growth and operational efficiency.",
-      email: "rahul@kppmca.in",
-      linkedin: "https://linkedin.com/in/rahul-desai",
+        "Gaurav focuses on corporate finance, assisting clients with mergers, acquisitions, and financial restructuring.",
+      email: "gaurav@kppmca.in",
+      linkedin: "https://linkedin.com/in/gaurav-r-patil",
+      image: "/images/team/gaurav-r.patil.jpg", // still with dot
     },
     {
-      name: "Sneha Gupta",
+      name: "Manish Jain",
       description:
-        "Sneha is an expert in accounting and bookkeeping, streamlining financial processes for small and medium enterprises.",
-      email: "sneha@kppmca.in",
-      linkedin: "https://linkedin.com/in/sneha-gupta",
+        "Manish provides compliance services, ensuring clients meet all regulatory requirements with ease and confidence.",
+      email: "manish@kppmca.in",
+      linkedin: "https://linkedin.com/in/manish-jain",
+      image: "/images/team/manish-jain.jpg",
     },
     {
-      name: "Vikram Singh",
+      name: "Owaise Momin",
       description:
-        "Vikram focuses on corporate finance, assisting clients with mergers, acquisitions, and financial restructuring.",
-      email: "vikram@kppmca.in",
-      linkedin: "https://linkedin.com/in/vikram-singh",
+        "Owaise advises clients on taxation and investment strategies, maximizing returns with smart planning.",
+      email: "owaise@kppmca.in",
+      linkedin: "https://linkedin.com/in/owaise-momin",
+      image: "/images/team/owaise-momin.jpg",
     },
     {
-      name: "Anita Rao",
+      name: "Swati Kulkarni",
       description:
-        "Anita provides compliance services, ensuring clients meet all regulatory requirements with ease and confidence.",
-      email: "anita@kppmca.in",
-      linkedin: "https://linkedin.com/in/anita-rao",
+        "Swati specializes in financial reporting, ensuring clarity and transparency for stakeholders.",
+      email: "swati@kppmca.in",
+      linkedin: "https://linkedin.com/in/swati-kulkarni",
+      image: "/images/team/swati-kulkarni.jpg",
     },
   ];
 
@@ -76,7 +98,7 @@ export default function Team() {
             <div className="w-fit mx-auto bg-accent text-primary px-4 py-1 rounded-full text-sm font-medium">
               Our Team
             </div>
-            <h2 className="text-3xl md:text-4xl text-foreground">
+            <h2 className="text-3xl md:text-4xl text-foreground font-bold">
               Meet Our Expert Chartered Accountants
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -86,55 +108,50 @@ export default function Team() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="p-4 gap-0 flex flex-col">
+              <Card
+                key={index}
+                className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 rounded-2xl"
+              >
                 <CardHeader className="p-0">
-                  <div className="relative w-full h-48 mb-4">
+                  <div className="relative w-full h-64">
                     <Image
-                      src="/placeholder.svg"
+                      src={member.image}
                       alt={`${member.name}'s profile`}
                       fill
-                      className="object-cover rounded-t-lg"
+                      className="object-cover object-top rounded-t-2xl"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
-                  <CardTitle className="text-xl">{member.name}</CardTitle>
+                  <CardTitle className="text-xl mt-4 text-center">
+                    {member.name}
+                  </CardTitle>
                 </CardHeader>
-                <CardContent className="p-0 mt-4 flex-1 flex flex-col space-y-4">
-                  <p className="text-muted-foreground">{member.description}</p>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
+                <CardContent className="p-4 flex-1 flex flex-col space-y-4 text-center">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {member.description}
+                  </p>
+                  <div className="space-y-2 mt-auto">
+                    <div className="flex items-center justify-center gap-2">
                       <Mail className="h-5 w-5 text-primary" />
                       <a
                         href={`mailto:${member.email}`}
-                        className="text-muted-foreground hover:text-primary"
+                        className="text-muted-foreground hover:text-primary text-sm"
                       >
                         {member.email}
                       </a>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-center gap-2">
                       <Linkedin className="h-5 w-5 text-primary" />
                       <a
                         href={member.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary"
+                        className="text-muted-foreground hover:text-primary text-sm"
                       >
                         LinkedIn Profile
                       </a>
                     </div>
                   </div>
-                  {/* <Button
-                    variant="outline"
-                    asChild
-                    className="w-full mt-auto"
-                  >
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="flex items-center gap-2"
-                    >
-                      Contact {member.name.split(" ")[0]}
-                    </a>
-                  </Button> */}
                 </CardContent>
               </Card>
             ))}
