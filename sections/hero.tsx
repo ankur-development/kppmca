@@ -37,16 +37,6 @@ const Hero = () => {
           </a>
         </div>
 
-        <div className="flex items-center">
-          <div className="flex relative">
-            <div className="size-8 sm:size-10 border-2 bg-accent rounded-full" />
-            <div className="size-8 sm:size-10 border-2 bg-accent rounded-full -translate-x-3 sm:-translate-x-4" />
-            <div className="size-8 sm:size-10 border-2 bg-accent rounded-full -translate-x-6 sm:-translate-x-8" />
-          </div>
-          <p className="ml-2 sm:ml-3 -translate-x-2 sm:-translate-x-4 text-sm sm:text-base">
-            500+ satisfied clients
-          </p>
-        </div>
       </div>
 
       <div className="flex flex-col justify-center w-full max-w-[80vw] sm:max-w-[60vw] md:max-w-[50vh] lg:max-w-[75vh]">
